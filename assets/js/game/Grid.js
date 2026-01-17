@@ -1,6 +1,4 @@
-// assets/js/services/Grid.js
 // Grille de cellules carrées, position absolue, responsive
-
 import { Cell } from './Cell.js';
 
 export class Grid {

@@ -1,6 +1,4 @@
-// assets/js/services/Cell.js
 // Représente une cellule de la grille
-
 export class Cell {
     constructor(row, col) {
         this.row = row;
