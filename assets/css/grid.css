@@ -1,0 +1,21 @@
+/* grid.css : styles pour la grille et les cellules */
+
+#grid-container {
+  position: relative;
+  background: #23272e;
+  border: 2px solid #444;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.grid-cell {
+  background: rgba(100, 200, 255, 0.15);
+  border: 1px solid #3a4a5a;
+  box-sizing: border-box;
+  transition: background 0.2s;
+}
+
+.grid-cell:hover {
+  background: rgba(100, 200, 255, 0.35);
+  cursor: pointer;
+}
