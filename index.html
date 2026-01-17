@@ -3,62 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Counter</title>
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/components.css">
-    <link rel="stylesheet" href="./assets/css/variables.css">
+    <title>Dark Mode Design</title>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/components.css">
     <style>
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: var(--dark-bg-color, #121212);
+            color: var(--dark-text-color, #ffffff);
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
         }
 
-        .counter-container {
+        header {
+            background-color: var(--dark-header-bg, #1f1f1f);
+            padding: 1rem;
             text-align: center;
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        .counter {
-            font-size: 3rem;
-            margin: 20px 0;
+        header h1 {
+            margin: 0;
+            color: var(--dark-header-text, #ffffff);
         }
 
-        .button {
-            background-color: #bb86fc;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        main {
+            padding: 2rem;
         }
 
-        .button:hover {
-            background-color: #3700b3;
-        }
-
-        .button:active {
-            background-color: #6200ee;
+        footer {
+            background-color: var(--dark-footer-bg, #1f1f1f);
+            color: var(--dark-footer-text, #ffffff);
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="counter-container">
-        <h1>Click Counter</h1>
-        <div class="counter" id="counter">0</div>
-        <button class="button" id="incrementButton">Click Me!</button>
-    </div>
+    <header>
+        <h1>Welcome to Dark Mode</h1>
+    </header>
+    <main>
+        <section id="click-counters"></section>
 
-    <script src="./main.js"></script>
+    </main>
+    <footer>
+        <p>&copy; 2026 Your Website</p>
+    </footer>
+    <script type="module">
+        import ClickCounterRenderer from './assets/js/domain/ClickCounter/ClickCounterRenderer.js';
+
+        const clickCountersContainer = document.getElementById('click-counters');
+
+        // Create 4 instances of ClickCounter
+        for (let i = 1; i <= 4; i++) {
+            new ClickCounterRenderer(clickCountersContainer, `counter-${i}`);
+        }
+    </script>
 </body>
 </html>
