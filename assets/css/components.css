@@ -1,0 +1,19 @@
+#click-counters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.click-counter {
+    display: flex;
+    padding: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+.click-counter__display {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
