@@ -1,7 +1,6 @@
 import { CellSetEntity } from '../events/CellSetEntity.js';
 import { CellClick } from '../events/CellClick.js';
 import { appInstance } from '../Application.js';
-
 // Représente une cellule de la grille
 export class Cell {
 

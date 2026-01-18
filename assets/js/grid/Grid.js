@@ -1,6 +1,5 @@
 // Grille de cellules carrées, position absolue, responsive
 import { Cell } from './Cell.js';
-
 export class Grid {
     constructor(cols, rows) {
         this.cols = cols;
