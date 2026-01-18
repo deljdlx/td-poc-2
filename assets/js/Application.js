@@ -52,8 +52,8 @@ export class Application {
     if (cell && cell.element) {
       const tower = new Tower();
       cell.setEntity(tower);
-      // this.tower.render(cell.element);
-      this.entityManager.addEntity('tower', tower);
+
+      this.entityManager.addEntity('tower-test', tower);
     }
 
     this.initClickCounters();
