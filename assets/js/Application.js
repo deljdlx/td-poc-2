@@ -1,3 +1,4 @@
+import { Tower } from './game/Tower.js';
 
 
 
@@ -47,10 +48,27 @@ export class Application {
     this.grid.render('#grid-container');
     this.clock.start();
 
+
+
+    // Création d'une tourelle dans la cellule (1,1)
+    // On suppose que la grille est déjà créée
+    // On cherche la cellule (1,1)
+    const cell = this.grid.cells.find(c => c.row === 1 && c.col === 1);
+    if (cell && cell.el) {
+      this.tower = new Tower();
+      this.tower.render(cell.el);
+      this.entityManager.addEntity('tower', this.tower);
+    }
+
+    this.initClickCounters();
+  }
+
+  initClickCounters() {
+
     for (let i = 0; i < 5; i++) {
-        const counter = new ClickCounter();
-        this.entityManager.addEntity('clickCounter', counter);
-        counter.render('#click-counters');
+      const counter = new ClickCounter();
+      this.entityManager.addEntity('clickCounter', counter);
+      counter.render('#click-counters');
     }
   }
 }
