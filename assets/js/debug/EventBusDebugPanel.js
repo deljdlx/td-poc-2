@@ -28,7 +28,12 @@ export class EventBusDebugPanel {
             boxShadow: '0 0 8px #000a',
             padding: '8px',
         });
-        this.panel.innerHTML = '<b>EventBus Debug Panel</b><hr><div class="event-list"></div>';
+        this.panel.innerHTML = `
+            <div class="eventbus-debug-header" style="font-weight:bold;font-size:14px;padding-bottom:4px;border-bottom:1px solid #555;letter-spacing:1px;">
+                🐞 EventBus Debug Panel
+            </div>
+            <div class="event-list"></div>
+        `;
         document.body.appendChild(this.panel);
         this.eventList = this.panel.querySelector('.event-list');
     }
