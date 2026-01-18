@@ -42,6 +42,7 @@ export class Application {
   get eventBus() {
     return this._eventBus;
   }
+  
 
   start() {
     console.log('Application started');

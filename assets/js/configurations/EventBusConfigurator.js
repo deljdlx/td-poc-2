@@ -18,26 +18,20 @@ export class EventBusConfigurator {
 
   initializeListeners() {
 
+    this.eventBus.on('cell.setEntity', (event) => {
+      const cell = event.data.cell;
+      const entity = event.data.entity;
+
+      console.group('%cEventBusConfigurator.js :: 32 =============================', 'color: #925014; font-size: 1rem');
+      console.log('Entity set in cell:', cell, entity);
+      console.groupEnd();
+    });
 
     this.eventBus.on('cell.click', (event) => {
       const testCanvas = this.application.testCanvas;
-
       const cell = event.source;
-
       const ctx = this.application.testCanvas.getContext('2d');
-      // const ctx = testCanvas.getContext('2d');
-
-
-      console.group('%cEventBusConfigurator.js :: 31 =============================', 'color: #846021; font-size: 1rem');
-      console.log(cell);
-      console.groupEnd();
-
       const center = CellPositionService.getCellCenter(cell);
-
-
-      console.group('%cEventBusConfigurator.js :: 32 =============================', 'color: #809225; font-size: 1rem');
-      console.log(center);
-      console.groupEnd();
 
       if (center) {
         ctx.clearRect(0, 0, testCanvas.width, testCanvas.height);

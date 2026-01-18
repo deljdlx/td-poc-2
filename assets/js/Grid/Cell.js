@@ -1,17 +1,27 @@
+import { CellSetEntity } from '../events/CellSetEntity.js';
 import { CellClick } from '../events/CellClick.js';
 import { appInstance } from '../Application.js';
 
 // Représente une cellule de la grille
 export class Cell {
+
+    /**
+     * @type {HTMLElement}
+     */
+    _element;
+
     constructor(row, col) {
         this.row = row;
         this.col = col;
         this._element = null;
-        this.entity = null;
     }
 
     setEntity(entity) {
         this.entity = entity;
+
+        const event = new CellSetEntity(this, entity);
+        appInstance.eventBus.emit(event);
+
         if (entity && typeof entity.render === 'function') {
             entity.render(this.element);
         }
