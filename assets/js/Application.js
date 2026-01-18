@@ -48,16 +48,12 @@ export class Application {
     this.grid.render('#grid-container');
     this.clock.start();
 
-
-
-    // Création d'une tourelle dans la cellule (1,1)
-    // On suppose que la grille est déjà créée
-    // On cherche la cellule (1,1)
     const cell = this.grid.getCell(1, 1);
     if (cell && cell.element) {
-      this.tower = new Tower();
-      this.tower.render(cell.element);
-      this.entityManager.addEntity('tower', this.tower);
+      const tower = new Tower();
+      cell.setEntity(tower);
+      // this.tower.render(cell.element);
+      this.entityManager.addEntity('tower', tower);
     }
 
     this.initClickCounters();
