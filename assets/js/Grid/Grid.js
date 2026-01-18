@@ -8,6 +8,13 @@ export class Grid {
         this.cells = [];
     }
 
+    /**
+     * Retourne la cellule à la position (row, col) ou undefined
+     */
+    getCell(row, col) {
+        return this.cells.find(c => c.row === row && c.col === col);
+    }
+
     render(cssSelector) {
         const container = document.querySelector(cssSelector);
         if (!container) throw new Error('Grid: container not found');
