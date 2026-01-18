@@ -16,7 +16,7 @@ export class CellPositionService {
     }
 
     static getCellCenter(cell) {
-        const rect = this.getCellRect(cell);
+        const rect = this.getCellPosition(cell);
         if (!rect) return null;
         return {
             x: rect.left + rect.width / 2,
