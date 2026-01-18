@@ -16,9 +16,6 @@ export class ClickCounter {
 
   triggerClick() {
     const event = new ClickCounterClick(this);
-    console.group('%cClickCounter.js :: 14 =============================', 'color: #097925; font-size: 1rem');
-    console.log(event);
-    console.groupEnd();
     this._eventBus.emit(event);
   }
 
