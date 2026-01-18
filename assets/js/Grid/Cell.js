@@ -7,6 +7,14 @@ export class Cell {
         this.row = row;
         this.col = col;
         this._element = null;
+        this.entity = null;
+    }
+
+    setEntity(entity) {
+        this.entity = entity;
+        if (entity && typeof entity.render === 'function') {
+            entity.render(this.element);
+        }
     }
 
     get element() {

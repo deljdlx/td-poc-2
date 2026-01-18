@@ -4,7 +4,7 @@
 export class CellPositionService {
     // cell peut être un objet Cell (avec .el) ou directement un élément DOM
     static getCellPosition(cell) {
-        const el = cell && cell.el ? cell.el : cell;
+        const el = cell && cell.element ? cell.element : cell;
         if (!el || !el.getBoundingClientRect) return null;
         const rect = el.getBoundingClientRect();
         return {

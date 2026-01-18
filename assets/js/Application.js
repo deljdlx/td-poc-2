@@ -43,7 +43,7 @@ export class Application {
     return this._eventBus;
   }
 
-  star() {
+  start() {
     console.log('Application started');
     this.grid.render('#grid-container');
     this.clock.start();
@@ -53,7 +53,7 @@ export class Application {
     // Création d'une tourelle dans la cellule (1,1)
     // On suppose que la grille est déjà créée
     // On cherche la cellule (1,1)
-    const cell = this.grid.cells.find(c => c.row === 1 && c.col === 1);
+    const cell = this.grid.getCell(1, 1);
     if (cell && cell.element) {
       this.tower = new Tower();
       this.tower.render(cell.element);

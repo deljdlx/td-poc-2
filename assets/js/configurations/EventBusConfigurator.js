@@ -26,7 +26,19 @@ export class EventBusConfigurator {
 
       const ctx = this.application.testCanvas.getContext('2d');
       // const ctx = testCanvas.getContext('2d');
+
+
+      console.group('%cEventBusConfigurator.js :: 31 =============================', 'color: #846021; font-size: 1rem');
+      console.log(cell);
+      console.groupEnd();
+
       const center = CellPositionService.getCellCenter(cell);
+
+
+      console.group('%cEventBusConfigurator.js :: 32 =============================', 'color: #809225; font-size: 1rem');
+      console.log(center);
+      console.groupEnd();
+
       if (center) {
         ctx.clearRect(0, 0, testCanvas.width, testCanvas.height);
         ctx.beginPath();
@@ -35,15 +47,6 @@ export class EventBusConfigurator {
         ctx.lineWidth = 3;
         ctx.stroke();
       }
-    });
-
-
-    this.eventBus.on('cell.click', (event) => {
-      const cell = event.source;
-      const position = CellPositionService.getCellPosition(cell);
-      console.group('%cEventBusConfigurator.js :: 14 =============================', 'color: #097925; font-size: 1rem');
-      console.log('Cell clicked at position:', position);
-      console.groupEnd();
     });
 
     this.eventBus.on('clickCounterClicked', (event) => {
