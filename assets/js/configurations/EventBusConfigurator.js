@@ -49,7 +49,7 @@ export class EventBusConfigurator {
       }
     });
 
-    this.eventBus.on('clickCounterClicked', (event) => {
+    this.eventBus.on('clickCounter.click', (event) => {
       const counter = event.source;
       counter.increment();
 
