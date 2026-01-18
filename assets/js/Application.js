@@ -42,20 +42,14 @@ export class Application {
   get eventBus() {
     return this._eventBus;
   }
-  
+
 
   start() {
     console.log('Application started');
     this.grid.render('#grid-container');
     this.clock.start();
 
-    const cell = this.grid.getCell(1, 1);
-    if (cell && cell.element) {
-      const tower = new Tower();
-      cell.setEntity(tower);
-
-      this.entityManager.addEntity('tower-test', tower);
-    }
+    this.entityManager.createTower(1, 1);
 
     this.initClickCounters();
   }
