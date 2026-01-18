@@ -1,3 +1,6 @@
+import { eventBusInstance } from "../services/EventBus.js";
+import { CellClick } from '../events/CellClick.js';
+
 // Représente une cellule de la grille
 export class Cell {
     constructor(row, col) {
@@ -17,6 +20,13 @@ export class Cell {
         this.el.style.width = this.el.style.height = size + 'px';
         this.el.style.left = x + 'px';
         this.el.style.top = y + 'px';
+
+        this.el.addEventListener('click', () => {
+            const event = new CellClick(this);
+            eventBusInstance.emit(event);
+
+        });
+
         if (!this.el.parentNode) {
             container.appendChild(this.el);
         }

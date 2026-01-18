@@ -1,6 +1,9 @@
 import { ClickCounterRenderer } from "./ClickCounterRenderer.js";
 import { ClickCounterClick } from "../events/ClickCounterClick.js";
 
+import { eventBusInstance } from "../services/EventBus.js";
+
+
 export class ClickCounter {
 
   value = 0;
@@ -14,7 +17,7 @@ export class ClickCounter {
     console.group('%cClickCounter.js :: 14 =============================', 'color: #097925; font-size: 1rem');
     console.log(event);
     console.groupEnd();
-    this.eventBus.emit(event);
+    eventBusInstance.emit(event);
   }
 
   increment() {

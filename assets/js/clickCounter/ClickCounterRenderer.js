@@ -1,5 +1,8 @@
 export class ClickCounterRenderer {
 
+    /**
+     * @type {ClickCounter}
+     */
     clickCounter;
 
     constructor(clickCounter) {

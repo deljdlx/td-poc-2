@@ -33,3 +33,5 @@ export class EventBus {
         }
     }
 }
+
+export const eventBusInstance = new EventBus();

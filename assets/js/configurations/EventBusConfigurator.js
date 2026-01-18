@@ -1,3 +1,4 @@
+import { CellPositionService } from '../services/CellPositionService.js';
 export class EventBusConfigurator {
 
   constructor(EventBus) {
@@ -6,6 +7,15 @@ export class EventBusConfigurator {
 
 
   initializeListeners() {
+
+    this.eventBus.on('cell.click', (event) => {
+      const cell = event.source;
+      const position = CellPositionService.getCellPosition(cell);
+      console.group('%cEventBusConfigurator.js :: 14 =============================', 'color: #097925; font-size: 1rem');
+      console.log('Cell clicked at position:', position);
+      console.groupEnd();
+    });
+
     this.eventBus.on('clickCounterClicked', (event) => {
       const counter = event.source;
       counter.increment();

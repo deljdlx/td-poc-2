@@ -2,13 +2,8 @@
 // Panneau de debug live, synchronisé avec la clock
 
 export class DebugPanel {
-    constructor(clock, entityManager) {
-        this.clock = clock;
-        this.entityManager = entityManager;
-        this.tickCounter = 0;
-        this.refreshRate = 4; // rafraîchit le DOM tous les 4 ticks
+    constructor() {
         this._initDOM();
-        this.clock.addTickListener(this._onTick.bind(this));
     }
 
     _initDOM() {
@@ -25,25 +20,11 @@ export class DebugPanel {
         this.el.style.fontSize = '1rem';
         this.el.style.zIndex = 1000;
         this.el.style.boxShadow = '0 2px 8px #0008';
+        this.el.innerHTML = '<b>Debug Panel</b><br>Ready.';
         document.body.appendChild(this.el);
     }
 
-    _onTick(dt, tickCount) {
-        this.tickCounter++;
-        if (this.tickCounter % this.refreshRate !== 0) return;
-        this.render();
-    }
-
-    render() {
-        // Exemple : affiche le nombre de ticks, le nombre de clickCounters, etc.
-        const clickCounters = this.entityManager.getEntities('clickCounter') || [];
-        const grid = this.entityManager.getEntities('grid')[0];
-        this.el.innerHTML = `
-            <b>Debug Panel</b><br>
-            Ticks: ${this.tickCounter}<br>
-            ClickCounters: ${clickCounters.length}<br>
-            ${clickCounters.map((c, i) => `CC[${i}]: ${c.value}`).join('<br>')}<br>
-            Grid: ${grid ? `${grid.cols} cols × ${grid.rows} rows` : 'none'}
-        `;
+    setContent(html) {
+        this.el.innerHTML = html;
     }
 }
