@@ -17,6 +17,12 @@ export class Clock {
     start() {
         if (this._timer) return;
         this._lastTick = performance.now();
+
+        console.group('%cClock.js :: 21 =============================', 'color: #036758; font-size: 1rem');
+        console.log(this.listeners);
+        console.groupEnd();
+
+
         this._timer = setInterval(() => {
             const now = performance.now();
             const dt = (now - this._lastTick) / 1000;
@@ -28,12 +34,21 @@ export class Clock {
             if (this.entityManager && typeof this.entityManager.updateAll === 'function') {
                 this.entityManager.updateAll(dt);
             }
+
             this.listeners.forEach(cb => cb(dt));
+
             // Appel des tick listeners
             this._tickListeners.forEach(cb => cb(dt, this._tickCount));
         }, this.interval);
     }
+
+
     addTickListener(cb) {
+
+        console.group('%cClock.js :: 41 =============================', 'color: #f0f; font-size: 1rem');
+        console.log(cb);
+        console.groupEnd();
+
         this._tickListeners.add(cb);
     }
 

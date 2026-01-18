@@ -11,7 +11,7 @@ import { EventBus } from './services/EventBus.js';
 import { EntityManager } from './services/EntityManager.js';
 
 import { Grid } from './Grid/Grid.js';
-import { Clock } from './game/Clock.js';
+import { Clock } from './services/Clock.js';
 
 
 export class Application {
@@ -20,9 +20,12 @@ export class Application {
 
     console.group('%cApplication.js :: 23 =============================', 'color: #519611; font-size: 1rem');
     console.log("Application constructor");
-    console.groupEnd();
+
+    this.clock = new Clock(this.entityManager, 60);
 
     this._eventBus = new EventBus(this);
+
+
     this.entityManager = new EntityManager(this);
 
 
@@ -35,8 +38,8 @@ export class Application {
 
     this.entityManager.addEntity('grid', this.grid);
 
-    // Instanciation et démarrage de la clock globale
-    this.clock = new Clock(this.entityManager, 60);
+
+    console.groupEnd();
   }
 
   get eventBus() {
@@ -47,11 +50,12 @@ export class Application {
   start() {
     console.log('Application started');
     this.grid.render('#grid-container');
-    this.clock.start();
 
     this.entityManager.createTower(1, 1);
 
     this.initClickCounters();
+
+    this.clock.start();
   }
 
   initClickCounters() {
