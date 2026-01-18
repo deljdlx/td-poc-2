@@ -34,8 +34,6 @@ export class Application {
 
     this.entityManager.addEntity('grid', this.grid);
 
-
-
     // Instanciation et démarrage de la clock globale
     this.clock = new Clock(this.entityManager, 60);
   }
