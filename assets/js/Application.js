@@ -54,9 +54,9 @@ export class Application {
     // On suppose que la grille est déjà créée
     // On cherche la cellule (1,1)
     const cell = this.grid.cells.find(c => c.row === 1 && c.col === 1);
-    if (cell && cell.el) {
+    if (cell && cell.element) {
       this.tower = new Tower();
-      this.tower.render(cell.el);
+      this.tower.render(cell.element);
       this.entityManager.addEntity('tower', this.tower);
     }
 

@@ -6,29 +6,32 @@ export class Cell {
     constructor(row, col) {
         this.row = row;
         this.col = col;
-        this.el = null;
+        this._element = null;
+    }
+
+    get element() {
+        return this._element;
     }
 
     render(container, size, x, y) {
-        if (!this.el) {
-            this.el = document.createElement('div');
-            this.el.className = 'grid-cell';
-            this.el.dataset.row = this.row;
-            this.el.dataset.col = this.col;
+        if (!this._element) {
+            this._element = document.createElement('div');
+            this._element.className = 'grid-cell';
+            this._element.dataset.row = this.row;
+            this._element.dataset.col = this.col;
         }
-        this.el.style.position = 'absolute';
-        this.el.style.width = this.el.style.height = size + 'px';
-        this.el.style.left = x + 'px';
-        this.el.style.top = y + 'px';
+        this._element.style.position = 'absolute';
+        this._element.style.width = this._element.style.height = size + 'px';
+        this._element.style.left = x + 'px';
+        this._element.style.top = y + 'px';
 
-        this.el.addEventListener('click', () => {
+        this._element.addEventListener('click', () => {
             const event = new CellClick(this);
             appInstance.eventBus.emit(event);
-
         });
 
-        if (!this.el.parentNode) {
-            container.appendChild(this.el);
+        if (!this._element.parentNode) {
+            container.appendChild(this._element);
         }
     }
 }
