@@ -4,8 +4,7 @@ import { Tower } from './game/Tower.js';
 
 
 import { CellPositionService } from './services/CellPositionService.js';
-import { CanvasLayerService } from './game/CanvasLayerService.js';
-import { DebugPanel } from './game/DebugPanel.js';
+import { CanvasLayerService } from './services/CanvasLayerService.js';
 import { ClickCounter } from './clickCounter/ClickCounter.js';
 import { EventBus } from './services/EventBus.js';
 import { EntityManager } from './services/EntityManager.js';
