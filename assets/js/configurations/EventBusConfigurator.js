@@ -1,5 +1,5 @@
 import { CellPositionService } from '../services/CellPositionService.js';
-import { Application } from '../Application.js';
+import { appInstance } from '../Application.js';
 export class EventBusConfigurator {
 
   /**
@@ -9,7 +9,7 @@ export class EventBusConfigurator {
 
   constructor(eventBus) {
     this.eventBus = eventBus;
-    this._application = eventBus.application;
+    this._application = appInstance;
   }
 
   get application() {

@@ -17,13 +17,17 @@ import { Clock } from './services/Clock.js';
 export class Application {
   constructor() {
 
+  }
+
+
+  init() {
 
     console.group('%cApplication.js :: 23 =============================', 'color: #519611; font-size: 1rem');
     console.log("Application constructor");
 
     this.clock = new Clock(this.entityManager, 60);
 
-    this._eventBus = new EventBus(this);
+    this._eventBus = new EventBus();
 
 
     this.entityManager = new EntityManager(this);
@@ -40,10 +44,6 @@ export class Application {
 
 
     console.groupEnd();
-  }
-
-  get eventBus() {
-    return this._eventBus;
   }
 
 
@@ -66,6 +66,12 @@ export class Application {
       counter.render('#click-counters');
     }
   }
+
+
+  get eventBus() {
+    return this._eventBus;
+  }
+
 }
 
 export const appInstance = new Application();

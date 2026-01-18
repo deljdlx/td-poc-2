@@ -1,5 +1,5 @@
 import { EventBusConfigurator } from "../configurations/EventBusConfigurator.js";
-import { Application } from "../Application.js";
+import { appInstance } from "../Application.js";
 
 import { Clock } from "./Clock.js";
 
@@ -18,9 +18,9 @@ export class EventBus {
      */
     _clock;
 
-    constructor(application) {
-        this._application = application;
-        this._clock = application.clock;
+    constructor() {
+        this._application = appInstance;
+        this._clock = appInstance.clock;
         this.listeners = {};
         this.eventBusHandler = new EventBusConfigurator(this);
         this.eventQueue = []; // Initialize the event queue

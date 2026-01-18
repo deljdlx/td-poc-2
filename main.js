@@ -1,5 +1,7 @@
-import { Application } from './assets/js/Application.js';
 
-const app = new Application();
-app.start();
+import { appInstance } from './assets/js/Application.js';
+
+appInstance.init();
+
+appInstance.start();
 
