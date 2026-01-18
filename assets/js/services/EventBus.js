@@ -1,10 +1,27 @@
 import { EventBusConfigurator } from "../configurations/EventBusConfigurator.js";
+import { Application } from "../Application.js";
 
 export class EventBus {
-    constructor() {
+
+    /**
+     * @type {Application}
+     */
+    _application;
+
+    constructor(application) {
+
+        console.group('%cEventBus.js :: 13 =============================', 'color: #514785; font-size: 1rem');
+        console.log(application);
+        console.groupEnd();
+
+        this._application = application;
         this.listeners = {};
         this.eventBusHandler = new EventBusConfigurator(this);
         this.initializeListeners();
+    }
+
+    get application() {
+        return this._application;
     }
 
     initializeListeners() {
@@ -34,4 +51,3 @@ export class EventBus {
     }
 }
 
-export const eventBusInstance = new EventBus();

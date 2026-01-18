@@ -1,5 +1,5 @@
-import { eventBusInstance } from "../services/EventBus.js";
 import { CellClick } from '../events/CellClick.js';
+import { appInstance } from '../Application.js';
 
 // Représente une cellule de la grille
 export class Cell {
@@ -23,7 +23,7 @@ export class Cell {
 
         this.el.addEventListener('click', () => {
             const event = new CellClick(this);
-            eventBusInstance.emit(event);
+            appInstance.eventBus.emit(event);
 
         });
 

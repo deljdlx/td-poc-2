@@ -1,12 +1,42 @@
 import { CellPositionService } from '../services/CellPositionService.js';
+import { Application } from '../Application.js';
 export class EventBusConfigurator {
 
-  constructor(EventBus) {
-    this.eventBus = EventBus;
+  /**
+   * @type {Application}
+   */
+  _application;
+
+  constructor(eventBus) {
+    this.eventBus = eventBus;
+    this._application = eventBus.application;
   }
 
+  get application() {
+    return this._application;
+  }
 
   initializeListeners() {
+
+
+    this.eventBus.on('cell.click', (event) => {
+      const testCanvas = this.application.testCanvas;
+
+      const cell = event.source;
+
+      const ctx = this.application.testCanvas.getContext('2d');
+      // const ctx = testCanvas.getContext('2d');
+      const center = CellPositionService.getCellCenter(cell);
+      if (center) {
+        ctx.clearRect(0, 0, testCanvas.width, testCanvas.height);
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, 20, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      }
+    });
+
 
     this.eventBus.on('cell.click', (event) => {
       const cell = event.source;
