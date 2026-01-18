@@ -1,16 +1,16 @@
 import { ClickCounterRenderer } from "./ClickCounterRenderer.js";
 import { ClickCounterClick } from "../events/ClickCounterClick.js";
+import { appInstance } from '../Application.js';
 
 export class ClickCounter {
 
   value = 0;
 
   _application;
-  constructor(application) {
+  constructor() {
     this.renderer = new ClickCounterRenderer(this);
-
-    this._application = application;
-    this._eventBus = application.eventBus;
+    this._application = appInstance;
+    this._eventBus = appInstance.eventBus;
 
   }
 

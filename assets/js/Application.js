@@ -50,7 +50,7 @@ export class Application {
     this.clock.start();
 
     for (let i = 0; i < 5; i++) {
-        const counter = new ClickCounter(this._eventBus);
+        const counter = new ClickCounter();
         this.entityManager.addEntity('clickCounter', counter);
         counter.render('#click-counters');
     }
