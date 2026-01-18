@@ -30,11 +30,6 @@ export class EventBus {
 
         // Synchronise la gestion de la pile d'event avec la clock si présente
         if (this._clock && typeof this._clock.addTickListener === 'function') {
-
-            console.group('%cEventBus.js :: 32 =============================', 'color: #792778; font-size: 1rem');
-            console.log('Linking EventBus processing to Clock ticks');
-            console.groupEnd();
-
             this._clock.addTickListener(() => this.processEventQueue());
         }
     }
