@@ -9,7 +9,7 @@ import { ClickCounter } from './clickCounter/ClickCounter.js';
 import { EventBus } from './services/EventBus.js';
 import { EntityManager } from './services/EntityManager.js';
 
-import { Grid } from './game/Grid.js';
+import { Grid } from './Grid/Grid.js';
 import { Clock } from './game/Clock.js';
 
 
